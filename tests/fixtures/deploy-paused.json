@@ -1,0 +1,158 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "landing",
+        "namespace": "web",
+        "creationTimestamp": "2026-10-02T08:11:00Z",
+        "generation": 4,
+        "labels": {
+          "app": "landing"
+        }
+      },
+      "spec": {
+        "replicas": 4,
+        "selector": {
+          "matchLabels": {
+            "app": "landing"
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "landing"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "app",
+                "image": "ghcr.io/acme/app:1.0.0"
+              }
+            ]
+          }
+        },
+        "paused": true
+      },
+      "status": {
+        "observedGeneration": 4,
+        "replicas": 5,
+        "updatedReplicas": 2,
+        "readyReplicas": 4,
+        "availableReplicas": 4,
+        "unavailableReplicas": 0,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "reason": "MinimumReplicasAvailable",
+            "lastUpdateTime": "2026-11-23T11:38:00Z",
+            "lastTransitionTime": "2026-10-02T08:11:00Z"
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "reason": "ReplicaSetUpdated",
+            "lastUpdateTime": "2026-11-23T11:38:00Z",
+            "lastTransitionTime": "2026-11-23T11:38:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "landing-9a8b7c6d5-hh111",
+        "namespace": "web",
+        "creationTimestamp": "2026-11-23T11:35:00Z",
+        "labels": {
+          "app": "landing",
+          "pod-template-hash": "9a8b7c6d5"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "landing-9a8b7c6d5",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T11:35:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T11:35:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T11:35:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T11:35:00Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-23T11:35:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

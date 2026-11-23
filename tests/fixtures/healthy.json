@@ -1,0 +1,820 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "checkout-api",
+        "namespace": "payments",
+        "creationTimestamp": "2026-10-02T08:11:00Z",
+        "generation": 4,
+        "labels": {
+          "app": "checkout-api"
+        }
+      },
+      "spec": {
+        "replicas": 3,
+        "selector": {
+          "matchLabels": {
+            "app": "checkout-api"
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "checkout-api"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "app",
+                "image": "ghcr.io/acme/app:1.0.0"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 4,
+        "replicas": 3,
+        "updatedReplicas": 3,
+        "readyReplicas": 3,
+        "availableReplicas": 3,
+        "unavailableReplicas": 0,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "reason": "MinimumReplicasAvailable",
+            "lastUpdateTime": "2026-11-23T09:10:00Z",
+            "lastTransitionTime": "2026-10-02T08:11:00Z"
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "reason": "NewReplicaSetAvailable",
+            "lastUpdateTime": "2026-11-23T09:10:00Z",
+            "lastTransitionTime": "2026-11-23T09:10:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "checkout-api-7f9c8b4d6-aa111",
+        "namespace": "payments",
+        "creationTimestamp": "2026-11-23T09:09:00Z",
+        "labels": {
+          "app": "checkout-api",
+          "pod-template-hash": "7f9c8b4d6"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "checkout-api-7f9c8b4d6",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:00Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-23T09:09:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "checkout-api-7f9c8b4d6-aa222",
+        "namespace": "payments",
+        "creationTimestamp": "2026-11-23T09:09:20Z",
+        "labels": {
+          "app": "checkout-api",
+          "pod-template-hash": "7f9c8b4d6"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "checkout-api-7f9c8b4d6",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:20Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:20Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:20Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:20Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-23T09:09:20Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "checkout-api-7f9c8b4d6-aa333",
+        "namespace": "payments",
+        "creationTimestamp": "2026-11-23T09:09:40Z",
+        "labels": {
+          "app": "checkout-api",
+          "pod-template-hash": "7f9c8b4d6"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "checkout-api-7f9c8b4d6",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:40Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:40Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:40Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T09:09:40Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-23T09:09:40Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/app:1.0.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "StatefulSet",
+      "metadata": {
+        "name": "postgres",
+        "namespace": "data",
+        "creationTimestamp": "2026-09-14T07:40:00Z",
+        "generation": 3,
+        "labels": {
+          "app": "postgres"
+        }
+      },
+      "spec": {
+        "replicas": 2,
+        "serviceName": "postgres",
+        "selector": {
+          "matchLabels": {
+            "app": "postgres"
+          }
+        },
+        "updateStrategy": {
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "postgres"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "app",
+                "image": "ghcr.io/acme/db:15.4"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 3,
+        "replicas": 2,
+        "readyReplicas": 2,
+        "updatedReplicas": 2,
+        "currentReplicas": 2,
+        "currentRevision": "postgres-5d4c3b2a1",
+        "updateRevision": "postgres-5d4c3b2a1",
+        "collisionCount": 0
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "postgres-0",
+        "namespace": "data",
+        "creationTimestamp": "2026-11-22T22:00:00Z",
+        "labels": {
+          "app": "postgres"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "postgres",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/db:15.4",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:00:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:00:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:00:00Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-22T22:00:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/db:15.4",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "postgres-1",
+        "namespace": "data",
+        "creationTimestamp": "2026-11-22T22:02:00Z",
+        "labels": {
+          "app": "postgres"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "postgres",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/db:15.4",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:02:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:02:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:02:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-22T22:02:00Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-22T22:02:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/db:15.4",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "DaemonSet",
+      "metadata": {
+        "name": "node-agent",
+        "namespace": "observability",
+        "creationTimestamp": "2026-08-01T06:00:00Z",
+        "generation": 7,
+        "labels": {
+          "app": "node-agent"
+        }
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "app": "node-agent"
+          }
+        },
+        "updateStrategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxUnavailable": 1
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "node-agent"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "app",
+                "image": "ghcr.io/acme/node-agent:3.2.0"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 7,
+        "currentNumberScheduled": 3,
+        "desiredNumberScheduled": 3,
+        "numberReady": 3,
+        "updatedNumberScheduled": 3,
+        "numberAvailable": 3,
+        "numberUnavailable": 0,
+        "numberMisscheduled": 0
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "node-agent-k1a2b",
+        "namespace": "observability",
+        "creationTimestamp": "2026-11-20T11:00:00Z",
+        "labels": {
+          "app": "node-agent"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-agent",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/node-agent:3.2.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:00Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-20T11:00:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/node-agent:3.2.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "node-agent-k3c4d",
+        "namespace": "observability",
+        "creationTimestamp": "2026-11-20T11:00:10Z",
+        "labels": {
+          "app": "node-agent"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-agent",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/node-agent:3.2.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:10Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:10Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:10Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:10Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-20T11:00:10Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/node-agent:3.2.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "node-agent-k5e6f",
+        "namespace": "observability",
+        "creationTimestamp": "2026-11-20T11:00:20Z",
+        "labels": {
+          "app": "node-agent"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-agent",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/node-agent:3.2.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:20Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:20Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:20Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-20T11:00:20Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-20T11:00:20Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/node-agent:3.2.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

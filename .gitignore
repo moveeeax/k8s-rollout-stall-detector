@@ -1,0 +1,24 @@
+# Python build and cache artefacts, anchored so nothing shadows source dirs.
+__pycache__/
+*.py[cod]
+/build/
+/dist/
+*.egg-info/
+/.venv/
+/venv/
+/.eggs/
+
+# Test and coverage output
+/.pytest_cache/
+/.coverage
+/htmlcov/
+/.tox/
+
+# Editors and OS noise
+/.idea/
+/.vscode/
+.DS_Store
+
+# Fixtures and examples are part of the test suite, never ignore them.
+!tests/fixtures/**
+!examples/**

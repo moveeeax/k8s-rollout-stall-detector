@@ -1,0 +1,76 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "ledger",
+        "namespace": "payments",
+        "creationTimestamp": "2026-10-02T08:11:00Z",
+        "generation": 4,
+        "labels": {
+          "app": "ledger"
+        }
+      },
+      "spec": {
+        "replicas": 3,
+        "selector": {
+          "matchLabels": {
+            "app": "ledger"
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "ledger"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "app",
+                "image": "ghcr.io/acme/app:1.0.0"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 4,
+        "replicas": 3,
+        "updatedReplicas": 1,
+        "readyReplicas": 1,
+        "availableReplicas": 1,
+        "unavailableReplicas": 2,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "reason": "MinimumReplicasAvailable",
+            "lastUpdateTime": "2026-11-23T11:38:00Z",
+            "lastTransitionTime": "2026-10-02T08:11:00Z"
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "reason": "ReplicaSetUpdated",
+            "lastUpdateTime": "2026-11-23T11:38:00Z",
+            "lastTransitionTime": "2026-11-23T11:38:00Z"
+          }
+        ]
+      }
+    }
+  ]
+}

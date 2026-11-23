@@ -1,0 +1,322 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "billing-api",
+        "namespace": "billing",
+        "creationTimestamp": "2026-10-02T08:11:00Z",
+        "generation": 4,
+        "labels": {
+          "app": "billing-api"
+        }
+      },
+      "spec": {
+        "replicas": 2,
+        "selector": {
+          "matchLabels": {
+            "app": "billing-api"
+          }
+        },
+        "strategy": {
+          "type": "RollingUpdate",
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "billing-api"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "app",
+                "image": "ghcr.io/acme/billing-api:2.4.1-rc3"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 4,
+        "replicas": 3,
+        "updatedReplicas": 1,
+        "readyReplicas": 2,
+        "availableReplicas": 2,
+        "unavailableReplicas": 0,
+        "conditions": [
+          {
+            "type": "Available",
+            "status": "True",
+            "reason": "MinimumReplicasAvailable",
+            "lastUpdateTime": "2026-11-23T11:38:00Z",
+            "lastTransitionTime": "2026-10-02T08:11:00Z"
+          },
+          {
+            "type": "Progressing",
+            "status": "True",
+            "reason": "ReplicaSetUpdated",
+            "lastUpdateTime": "2026-11-23T11:38:00Z",
+            "lastTransitionTime": "2026-11-23T11:38:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "billing-api-5c6d7e8f9-bb111",
+        "namespace": "billing",
+        "creationTimestamp": "2026-11-18T14:00:00Z",
+        "labels": {
+          "app": "billing-api",
+          "pod-template-hash": "5c6d7e8f9"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "billing-api-5c6d7e8f9",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/billing-api:2.4.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:00Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-18T14:00:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/billing-api:2.4.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "billing-api-5c6d7e8f9-bb222",
+        "namespace": "billing",
+        "creationTimestamp": "2026-11-18T14:00:30Z",
+        "labels": {
+          "app": "billing-api",
+          "pod-template-hash": "5c6d7e8f9"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "billing-api-5c6d7e8f9",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/billing-api:2.4.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:30Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:30Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:30Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-11-18T14:00:30Z"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-18T14:00:30Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/billing-api:2.4.0",
+            "imageID": "ghcr.io/acme@sha256:1f2e3d4c5b6a",
+            "ready": true,
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-11-23T10:05:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "billing-api-6d7e8f9a0-cc333",
+        "namespace": "billing",
+        "creationTimestamp": "2026-11-23T11:38:00Z",
+        "labels": {
+          "app": "billing-api",
+          "pod-template-hash": "6d7e8f9a0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "billing-api-6d7e8f9a0",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/billing-api:2.4.1-rc3",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "serviceAccountName": "default",
+        "nodeName": "ip-10-0-1-23.eu-central-1.compute.internal"
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T11:38:00Z"
+          },
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastTransitionTime": "2026-11-23T11:38:00Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastTransitionTime": "2026-11-23T11:38:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-11-23T11:38:00Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [app]"
+          }
+        ],
+        "hostIP": "10.0.1.23",
+        "podIP": "10.0.37.14",
+        "startTime": "2026-11-23T11:38:00Z",
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "ghcr.io/acme/billing-api:2.4.1-rc3",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 0,
+            "started": false,
+            "state": {
+              "waiting": {
+                "reason": "ImagePullBackOff",
+                "message": "Back-off pulling image \"ghcr.io/acme/billing-api:2.4.1-rc3\""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

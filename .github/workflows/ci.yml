@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Unit tests
+        run: pytest
+
+      - name: Stalled dump exits 1
+        run: |
+          set +e
+          k8s-rollout-stall-detector --from-file examples/cluster-dump.json --min-age 0
+          code=$?
+          set -e
+          test "$code" = "1"
+
+      - name: Clean dump exits 0
+        run: k8s-rollout-stall-detector --from-file tests/fixtures/healthy.json --min-age 0
+
+      - name: JSON output parses
+        run: |
+          k8s-rollout-stall-detector --from-file examples/cluster-dump.json \
+            --min-age 0 --json | python -c "import json,sys; print(len(json.load(sys.stdin)))"
